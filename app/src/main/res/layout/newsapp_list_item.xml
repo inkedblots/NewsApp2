@@ -24,17 +24,17 @@
         tools:text="News article lead" />
 
     <TextView
-        android:id="@+id/author"
+        android:id="@+id/byline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/sectionDate_textSize"
-        tools:text="Author" />
+        tools:text="Byline" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/sectionDate_textSize"
-        tools:text="Mar 6, 2010" />
+        tools:text="May 1, 2018" />
 
 </LinearLayout>

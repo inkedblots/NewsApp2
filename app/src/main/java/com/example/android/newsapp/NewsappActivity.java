@@ -23,7 +23,7 @@ public class NewsappActivity extends AppCompatActivity
 
     public static final String LOG_TAG = NewsappActivity.class.getName();
 
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?from-date=2018-06-01&to-date=2018-08-01&q=Music&api-key=0c306426-dbf2-45fe-b3ac-8d26e799c138";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?from-date=2018-05-01&to-date=2018-08-01&q=Music&api-key=0c306426-dbf2-45fe-b3ac-8d26e799c138";
 
     private static final int NEWSAPP_LOADER_ID = 1;
     ListView newsappListView;

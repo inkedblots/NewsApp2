@@ -35,7 +35,6 @@ public final class QueryUtils {
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making HTTP request.", e);
         }
-
         return extractResponseFromJson(jsonResponse);
     }
 
@@ -51,7 +50,6 @@ public final class QueryUtils {
 
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
-
         if (url == null) {
             return jsonResponse;
         }
@@ -115,10 +113,10 @@ public final class QueryUtils {
 
                 String section = currentNews.getString("sectionId");
                 String title = currentNews.getString("webTitle");
-                String author = currentNews.getString("webAuthor");
+                String byline = currentNews.getString("byline");
                 String date = currentNews.getString("webPublicationDate");
                 String url = currentNews.getString("webUrl");
-                Newsapp newsapps = new Newsapp(section, title, author, date, url);
+                Newsapp newsapps = new Newsapp(section, title, byline, date, url);
                 newsapp.add(newsapps);
             }
 
@@ -128,5 +126,4 @@ public final class QueryUtils {
 
         return newsapp;
     }
-
 }

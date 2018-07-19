@@ -6,16 +6,16 @@ public class Newsapp {
 
     private String mTitle;
 
-    private String mAuthor;
+    private String mByline;
 
     private String mDate;
 
     private String mUrl;
 
-    Newsapp(String section, String title, String author, String date, String url) {
+    Newsapp(String section, String title, String byline, String date, String url) {
         mSection = section;
         mTitle = title;
-        mAuthor = author;
+        mByline = byline;
         mDate = date;
         mUrl = url;
     }
@@ -28,8 +28,8 @@ public class Newsapp {
         return mTitle;
     }
 
-    public String getAuthor() {
-        return mAuthor;
+    public String getByline() {
+        return mByline;
     }
 
    public String getDate() {
