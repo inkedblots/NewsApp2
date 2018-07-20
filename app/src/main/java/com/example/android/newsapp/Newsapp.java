@@ -1,22 +1,24 @@
 package com.example.android.newsapp;
 
+import java.util.Date;
+
 public class Newsapp {
 
     private String mSection;
 
     private String mTitle;
 
-    private String mByline;
+    private String mAuthorFullName;
 
-    private String mDate;
+    private Date mPublicationDate;
 
     private String mUrl;
 
-    Newsapp(String section, String title, String byline, String date, String url) {
+    Newsapp(String section, String title, String authorFullName, Date pubDate, String url) {
         mSection = section;
         mTitle = title;
-        mByline = byline;
-        mDate = date;
+        mAuthorFullName = authorFullName;
+        mPublicationDate = pubDate;
         mUrl = url;
     }
 
@@ -28,12 +30,12 @@ public class Newsapp {
         return mTitle;
     }
 
-    public String getByline() {
-        return mByline;
+    public String getAuthor() {
+        return mAuthorFullName;
     }
 
-   public String getDate() {
-        return mDate;
+   public Date getPublicationDate() {
+        return mPublicationDate;
    }
 
     public String getUrl() {

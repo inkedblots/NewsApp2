@@ -3,6 +3,7 @@ package com.example.android.newsapp;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,7 +16,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public final class QueryUtils {
@@ -102,6 +105,7 @@ public final class QueryUtils {
         }
 
         List<Newsapp> newsapp = new ArrayList<>();
+
         try {
             JSONObject baseJsonResponse = new JSONObject(newsappJSON);
             JSONObject newsJSONObject = baseJsonResponse.getJSONObject("response");
@@ -113,10 +117,47 @@ public final class QueryUtils {
 
                 String section = currentNews.getString("sectionId");
                 String title = currentNews.getString("webTitle");
-                String byline = currentNews.getString("byline");
-                String date = currentNews.getString("webPublicationDate");
+
+                JSONArray tags = currentNews.getJSONArray("tags");
+
+                //If "tags" array is not null
+                String authorFullName = "";
+                if (!tags.isNull(0)) {
+                    JSONObject currentTag = tags.getJSONObject(0);
+
+                    //Author first name
+                    String authorFirstName = !currentTag.isNull("firstName") ? currentTag.getString("firstName") : "";
+
+                    //Author last name
+                    String authorLastName = !currentTag.isNull("lastName") ? currentTag.getString("lastName") : "";
+
+                    //Author full name
+                    authorFullName = StringUtils.capitalize(authorFirstName.toLowerCase().trim()) + " " + StringUtils.capitalize(authorLastName.toLowerCase().trim());
+                    if (authorFirstName.trim() != "" || authorLastName.trim() != "") {
+                        authorFullName = ("by ").concat(authorFullName);
+                    } else {
+                        authorFullName = "";
+                    }
+                }
+
+
+                // Extract the value for the key called "webPublicationDate"
+                String originalPublicationDate = currentNews.getString("webPublicationDate");
+
+                //Format publication date
+                Date publicationDate = null;
+                try {
+                    publicationDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).parse(originalPublicationDate);
+                } catch (Exception e) {
+                    // If an error is thrown when executing the above statement in the "try" block,
+                    // catch the exception here, so the app doesn't crash. Print a log message
+                    // with the message from the exception.
+                    Log.e("QueryUtils", "Problem parsing the news date", e);
+                }
+
+
                 String url = currentNews.getString("webUrl");
-                Newsapp newsapps = new Newsapp(section, title, byline, date, url);
+                Newsapp newsapps = new Newsapp(section, title, authorFullName, publicationDate, url);
                 newsapp.add(newsapps);
             }
 

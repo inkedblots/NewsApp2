@@ -2,11 +2,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#26272c</color>
     <color name="colorPrimaryDark">#26272c</color>
-    <color name="colorAccent">#ff9800</color>
+    <color name="colorAccent">#ffcc80</color>
     <color name="background_material_light" tools:ignore="PrivateResource">#26272c</color>
     <color name="foreground_material_light" tools:ignore="PrivateResource">#26272c</color>
     <color name="text_color_primary">#fdfdfd</color>
-    <color name="primary_text_material_dark">#fdfdfd</color>
-    <color name="text_color_secondary2">#fdfdfd</color>
+    <color name="primary_text_material_dark">#f6aa7a</color>
+    <color name="text_color_secondary2">#AFB8BE</color>
 
 </resources>
