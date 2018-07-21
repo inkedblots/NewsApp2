@@ -34,9 +34,9 @@ public class Newsapp {
         return mAuthorFullName;
     }
 
-   public Date getPublicationDate() {
+    public Date getPublicationDate() {
         return mPublicationDate;
-   }
+    }
 
     public String getUrl() {
         return mUrl;

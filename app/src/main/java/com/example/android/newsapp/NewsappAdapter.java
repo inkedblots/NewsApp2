@@ -37,9 +37,6 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
         TextView sectionView = listItemView.findViewById(R.id.section);
         sectionView.setText(currentNews.getSection());
 
-//        TextView dateView = listItemView.findViewById(R.id.date);
-//        dateView.setText(currentNews.getPublicationDate());
-
         TextView authorView = listItemView.findViewById(R.id.author);
         authorView.setText(currentNews.getAuthor());
 
@@ -58,26 +55,22 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
 
         if (currentNews.getPublicationDate() != null) {
             dateView = listItemView.findViewById(R.id.date);
-            // Format the date string (i.e. "Mar 3, 1984")
+            // Format the date string (i.e. "May 30, 1999")
             String formattedDate = formatDate(currentNews.getPublicationDate());
-            // Display the date of the current earthquake in that TextView
+            // Display the date of the current date in that TextView
             dateView.setText(formattedDate);
-
             //Set date views as visible
             dateView.setVisibility(View.VISIBLE);
 
         } else {
             //Set date & time views as gone
             dateView.setVisibility(View.GONE);
-
         }
-
-        // Return the list item view that is now showing the appropriate data
         return listItemView;
     }
 
     /**
-     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
+     * Return the formatted date string (i.e. "May 30, 1999") from a Date object.
      */
     private String formatDate(Date dateObject) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");

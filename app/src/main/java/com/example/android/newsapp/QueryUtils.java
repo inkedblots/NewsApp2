@@ -140,7 +140,6 @@ public final class QueryUtils {
                     }
                 }
 
-
                 // Extract the value for the key called "webPublicationDate"
                 String originalPublicationDate = currentNews.getString("webPublicationDate");
 
@@ -155,7 +154,6 @@ public final class QueryUtils {
                     Log.e("QueryUtils", "Problem parsing the news date", e);
                 }
 
-
                 String url = currentNews.getString("webUrl");
                 Newsapp newsapps = new Newsapp(section, title, authorFullName, publicationDate, url);
                 newsapp.add(newsapps);
@@ -164,7 +162,6 @@ public final class QueryUtils {
         } catch (JSONException e) {
             Log.e("QueryUtils", "Problem parsing the newsapp JSON results", e);
         }
-
         return newsapp;
     }
 }
