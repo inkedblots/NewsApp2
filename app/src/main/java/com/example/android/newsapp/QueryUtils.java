@@ -141,16 +141,15 @@ public final class QueryUtils {
                 }
 
                 // Extract the value for the key called "webPublicationDate"
-                String originalPublicationDate = currentNews.getString("webPublicationDate");
+                String origPublicationDate = currentNews.getString("webPublicationDate");
 
                 //Format publication date
                 Date publicationDate = null;
                 try {
-                    publicationDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).parse(originalPublicationDate);
+                    publicationDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).parse(origPublicationDate);
                 } catch (Exception e) {
-                    // If an error is thrown when executing the above statement in the "try" block,
-                    // catch the exception here, so the app doesn't crash. Print a log message
-                    // with the message from the exception.
+                    // If an error is thrown in the "try" block, catch the exception here,
+                    // Print a log message with the message from the exception.
                     Log.e("QueryUtils", "Problem parsing the news date", e);
                 }
 

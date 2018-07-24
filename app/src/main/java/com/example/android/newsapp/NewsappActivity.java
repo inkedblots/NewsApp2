@@ -5,11 +5,17 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,11 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewsappActivity extends AppCompatActivity
-        implements LoaderCallbacks<List<Newsapp>> {
+        implements LoaderCallbacks<List<Newsapp>>,
+        SharedPreferences.OnSharedPreferenceChangeListener {
+
 
     public static final String LOG_TAG = NewsappActivity.class.getName();
 
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?from-date=2018-06-01&to-date=2018-08-01&show-tags=contributor&q=music&api-key=0c306426-dbf2-45fe-b3ac-8d26e799c138";
+    private static final String GUARDIAN_REQUEST_URL =
+            "https://content.guardianapis.com/search?&api-key=0c306426-dbf2-45fe-b3ac-8d26e799c138";
 
     private static final int NEWSAPP_LOADER_ID = 1;
     ListView newsappListView;
@@ -36,13 +45,19 @@ public class NewsappActivity extends AppCompatActivity
         setContentView(R.layout.newsapp_activity);
 
         newsappListView = findViewById(R.id.list);
-
         mEmptyStateTextView = findViewById(R.id.empty_view);
+
         newsappListView.setEmptyView(mEmptyStateTextView);
 
         mAdapter = new NewsappAdapter(this, new ArrayList<Newsapp>());
 
         newsappListView.setAdapter(mAdapter);
+
+        // Obtain a reference to the SharedPreferences file for this app
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        // And register to be notified of preference changes
+        // So we know when the user has adjusted the query settings
+        prefs.registerOnSharedPreferenceChangeListener(this);
 
         newsappListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -52,7 +67,14 @@ public class NewsappActivity extends AppCompatActivity
                 Newsapp currentNews = mAdapter.getItem(position);
                 Uri newsappUri = Uri.parse(currentNews.getUrl());
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsappUri);
-                startActivity(websiteIntent);
+
+                PackageManager packageManager = getPackageManager();
+                List<ResolveInfo> activities = packageManager.queryIntentActivities(websiteIntent, 0);
+                boolean isIntentSafe = activities.size() > 0;
+
+                if (isIntentSafe) {
+                    startActivity(websiteIntent);
+                }
             }
         });
 
@@ -72,15 +94,59 @@ public class NewsappActivity extends AppCompatActivity
     }
 
     @Override
+    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+        if (key.equals(getString(R.string.settings_sectionId_key)) ||
+                key.equals(getString(R.string.settings_order_by_key))) {
+            // Clear the ListView as a new query will be kicked off
+            mAdapter.clear();
+
+            // Hide the empty state text view as the loading indicator will be displayed
+            mEmptyStateTextView.setVisibility(View.GONE);
+
+            // Show the loading indicator while new data is being fetched
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.VISIBLE);
+
+            // Restart the loader to requery the Guardian as the query settings have been updated
+            getLoaderManager().restartLoader(NEWSAPP_LOADER_ID, null, this);
+        }
+    }
+
+    @Override
     public Loader<List<Newsapp>> onCreateLoader(int i, Bundle bundle) {
-        return new NewsappLoader(this, GUARDIAN_REQUEST_URL);
+//        return new NewsappLoader(this, GUARDIAN_REQUEST_URL);
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String sectionId = sharedPrefs.getString(
+                getString(R.string.settings_sectionId_key),
+                getString(R.string.settings_sectionId_default));
+
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
+        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("format", "json");
+        uriBuilder.appendQueryParameter("limit", "10");
+        uriBuilder.appendQueryParameter("sectionname", sectionId);
+        uriBuilder.appendQueryParameter("orderby", "sectionId");
+
+        return new NewsappLoader(this, uriBuilder.toString());
     }
 
     @Override
     public void onLoadFinished(Loader<List<Newsapp>> loader, List<Newsapp> newsapp) {
+        // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.noArticles);
+
+        // Clear the adapter of previous articles
+        mAdapter.clear();
 
         if (newsapp != null && !newsapp.isEmpty()) {
             updateUi(newsapp);
@@ -98,5 +164,24 @@ public class NewsappActivity extends AppCompatActivity
     @Override
     public void onLoaderReset(Loader<List<Newsapp>> loader) {
         mAdapter.clear();
+    }
+
+    @Override
+    // This method initialize the contents of the Activity's options menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    // This method is called whenever an item in the options menu is selected.
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
