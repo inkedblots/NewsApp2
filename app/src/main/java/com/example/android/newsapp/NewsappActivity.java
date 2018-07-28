@@ -110,7 +110,8 @@ public class NewsappActivity extends AppCompatActivity
             getLoaderManager().restartLoader(NEWSAPP_LOADER_ID, null, this);
         }
     }
-//                            change 'args' back to 'bundle'
+
+    //                            change 'args' back to 'bundle'
     @Override
     public Loader<List<Newsapp>> onCreateLoader(int i, Bundle args) {
 
@@ -132,7 +133,7 @@ public class NewsappActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("limit", "10");
         uriBuilder.appendQueryParameter("sectionName", sectionId);
-        uriBuilder.appendQueryParameter("orderby", "orderBy");
+        uriBuilder.appendQueryParameter("order-by", "orderBy");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
 
         if (!sectionId.equals(getString(R.string.settings_section_default))) {
