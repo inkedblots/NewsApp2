@@ -51,7 +51,6 @@ public class NewsappActivity extends AppCompatActivity
 
         newsappListView.setEmptyView(mEmptyStateTextView);
         mAdapter = new NewsappAdapter(this, new ArrayList<Newsapp>());
-
         newsappListView.setAdapter(mAdapter);
 
         // Obtain a reference to the SharedPreferences file for this app
