@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,7 +46,9 @@ public class NewsappActivity extends AppCompatActivity
         setContentView(R.layout.newsapp_activity);
 
         newsappListView = findViewById(R.id.list);
-        mEmptyStateTextView = findViewById(R.id.empty_view);
+        RelativeLayout main = findViewById(R.id.main);
+        mEmptyStateTextView = main.findViewById(R.id.empty_view);
+
         newsappListView.setEmptyView(mEmptyStateTextView);
         mAdapter = new NewsappAdapter(this, new ArrayList<Newsapp>());
 
