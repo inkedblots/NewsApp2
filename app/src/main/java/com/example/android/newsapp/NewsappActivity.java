@@ -32,7 +32,7 @@ public class NewsappActivity extends AppCompatActivity
     public static final String LOG_TAG = NewsappActivity.class.getName();
 
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?&api-key=0c306426-dbf2-45fe-b3ac-8d26e799c138";
+            "https://content.guardianapis.com/search?";
 
     private static final int NEWSAPP_LOADER_ID = 1;
     ListView newsappListView;
@@ -46,17 +46,13 @@ public class NewsappActivity extends AppCompatActivity
 
         newsappListView = findViewById(R.id.list);
         mEmptyStateTextView = findViewById(R.id.empty_view);
-
         newsappListView.setEmptyView(mEmptyStateTextView);
-
         mAdapter = new NewsappAdapter(this, new ArrayList<Newsapp>());
 
         newsappListView.setAdapter(mAdapter);
 
         // Obtain a reference to the SharedPreferences file for this app
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        // And register to be notified of preference changes
-        // So we know when the user has adjusted the query settings
         prefs.registerOnSharedPreferenceChangeListener(this);
 
         newsappListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,7 +61,7 @@ public class NewsappActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 Newsapp currentNews = mAdapter.getItem(position);
-                Uri newsappUri = Uri.parse(currentNews.getUrl());
+                Uri newsappUri = Uri.parse(currentNews != null ? currentNews.getUrl() : null);
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsappUri);
 
                 PackageManager packageManager = getPackageManager();
@@ -81,6 +77,7 @@ public class NewsappActivity extends AppCompatActivity
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        assert connMgr != null;
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -95,7 +92,7 @@ public class NewsappActivity extends AppCompatActivity
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (key.equals(getString(R.string.settings_sectionId_key)) ||
+        if (key.equals(getString(R.string.settings_section_key)) ||
                 key.equals(getString(R.string.settings_order_by_key))) {
             // Clear the ListView as a new query will be kicked off
             mAdapter.clear();
@@ -111,36 +108,41 @@ public class NewsappActivity extends AppCompatActivity
             getLoaderManager().restartLoader(NEWSAPP_LOADER_ID, null, this);
         }
     }
-
+//                            change 'args' back to 'bundle'
     @Override
-    public Loader<List<Newsapp>> onCreateLoader(int i, Bundle bundle) {
-//        return new NewsappLoader(this, GUARDIAN_REQUEST_URL);
+    public Loader<List<Newsapp>> onCreateLoader(int i, Bundle args) {
+
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         String sectionId = sharedPrefs.getString(
-                getString(R.string.settings_sectionId_key),
-                getString(R.string.settings_sectionId_default));
+                getString(R.string.settings_section_key),
+                getString(R.string.settings_section_default));
 
         String orderBy = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
-                getString(R.string.settings_order_by_default)
-        );
+                getString(R.string.settings_order_by_default));
 
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
+        uriBuilder.appendQueryParameter("api-key", "0c306426-dbf2-45fe-b3ac-8d26e799c138");
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("limit", "10");
-        uriBuilder.appendQueryParameter("sectionname", sectionId);
-        uriBuilder.appendQueryParameter("orderby", "sectionId");
+        uriBuilder.appendQueryParameter("sectionName", sectionId);
+        uriBuilder.appendQueryParameter("orderby", "orderBy");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+
+        if (!sectionId.equals(getString(R.string.settings_section_default))) {
+            uriBuilder.appendQueryParameter("sectionName", sectionId);
+        }
 
         return new NewsappLoader(this, uriBuilder.toString());
     }
 
     @Override
     public void onLoadFinished(Loader<List<Newsapp>> loader, List<Newsapp> newsapp) {
-        // Hide loading indicator because the data has been loaded
+        // Hide loading indicator; the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.noArticles);

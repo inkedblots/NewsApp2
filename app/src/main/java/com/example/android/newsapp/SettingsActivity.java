@@ -24,7 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference sectionId = findPreference(getString(R.string.settings_sectionId_key));
+            Preference sectionId = findPreference(getString(R.string.settings_section_key));
             bindPreferenceSummaryToValue(sectionId);
 
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));

@@ -1,27 +1,61 @@
 <resources>
     <string name="app_name">News App</string>
     <string name="noInternet">No Internet Connection</string>
-    <string name="noArticles">No articles found</string>
+    <string name="noArticles">No articles found.\nPlease try again at a later time.</string>
 
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
 
 
-    <!-- Change information in the strings below -->
-    <string name="settings_sectionId_label">sectionId</string>
-    <string name="settings_sectionId_key" translatable="false">sectionId</string>
-    <string name="settings_sectionId_default" translatable="false">Music</string>
-
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_section_value</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_newest_value</string>
 
-    <!-- Label for order-by section option [CHAR LIMIT=20] -->
-    <string name="settings_order_by_section_label">News Section</string>
-    <string name="settings_order_by_section_value" translatable="false">section</string>
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
 
-    <!-- Label for order-by date option [CHAR LIMIT=20] -->
-    <string name="settings_order_by_from_date_label">From</string>
-    <string name="settings_order_by_from_date_value" translatable="false">date</string>
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+
+
+    <string name="settings_section_label">Section</string>
+    <string name="settings_section_key" translatable="false">section</string>
+    <string name="settings_section_default" translatable="false">@string/settings_section_all_value</string>
+
+    <string name="settings_section_all_label">All</string>
+    <string name="settings_section_all_value" translatable="false"> </string>
+
+    <string name="settings_section_technology_label">Technology</string>
+    <string name="settings_section_technology_value" translatable="false">technology</string>
+
+    <string name="settings_section_environment_label">Environment</string>
+    <string name="settings_section_environment_value" translatable="false">environment</string>
+
+    <string name="settings_section_sport_label">Sports</string>
+    <string name="settings_section_sport_value" translatable="false">sport</string>
+
+    <string name="settings_section_uk_news_label">UK News</string>
+    <string name="settings_section_uk_news_value" translatable="false">uk-news</string>
+
+    <string name="settings_section_commentisfree_label">Opinion</string>
+    <string name="settings_section_commentisfree_value" translatable="false">commentisfree</string>
+
+    <string name="settings_section_world_label">World News</string>
+    <string name="settings_section_world_value" translatable="false">world</string>
+
+    <string name="settings_section_lifeandstyle_label">Life and Style</string>
+    <string name="settings_section_lifeandstyle_value" translatable="false">lifeandstyle</string>
+
+    <string name="settings_section_money_label">Money</string>
+    <string name="settings_section_money_value" translatable="false">money</string>
+
+    <string name="settings_section_politics_label">Politics</string>
+    <string name="settings_section_politics_value" translatable="false">politics</string>
+
+    <string name="settings_section_music_label">Music</string>
+    <string name="settings_section_music_value" translatable="false">music</string>
 </resources>

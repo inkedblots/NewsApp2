@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_order_by_labels">
+        <item>@string/settings_order_by_newest_label</item>
+        <item>@string/settings_order_by_oldest_label</item>
+        <item>@string/settings_order_by_relevance_label</item>
+    </string-array>
+
+    <string-array name="settings_order_by_values">
+        <item>@string/settings_order_by_newest_value</item>
+        <item>@string/settings_order_by_oldest_value</item>
+        <item>@string/settings_order_by_relevance_value</item>
+    </string-array>
+
+    <string-array name="settings_section_labels">
+        <item>@string/settings_section_key</item>
+
+    </string-array>
+    <string-array name="settings_section_values">
+        <item>@string/settings_section_all_value</item>
+        <item>@string/settings_section_technology_value</item>
+        <item>@string/settings_section_environment_value</item>
+        <item>@string/settings_section_sport_value</item>
+        <item>@string/settings_section_uk_news_value</item>
+        <item>@string/settings_section_commentisfree_value</item>
+        <item>@string/settings_section_world_value</item>
+        <item>@string/settings_section_lifeandstyle_value</item>
+        <item>@string/settings_section_money_value</item>
+        <item>@string/settings_section_politics_value</item>
+        <item>@string/settings_section_music_value</item>
+    </string-array>
+</resources>
+
+<!-- KEEP or TOSS THIS FILE??-->

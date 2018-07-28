@@ -115,8 +115,9 @@ public final class QueryUtils {
 
                 JSONObject currentNews = newsappArray.getJSONObject(i);
 
-                String section = currentNews.getString("sectionId");
                 String title = currentNews.getString("webTitle");
+                String sectionId = currentNews.getString("sectionName");
+
 
                 JSONArray tags = currentNews.getJSONArray("tags");
 
@@ -154,7 +155,7 @@ public final class QueryUtils {
                 }
 
                 String url = currentNews.getString("webUrl");
-                Newsapp newsapps = new Newsapp(section, title, authorFullName, publicationDate, url);
+                Newsapp newsapps = new Newsapp(sectionId, title, authorFullName, publicationDate, url);
                 newsapp.add(newsapps);
             }
 

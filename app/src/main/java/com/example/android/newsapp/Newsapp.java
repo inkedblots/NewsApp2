@@ -22,6 +22,7 @@ public class Newsapp {
         mUrl = url;
     }
 
+
     public String getSection() {
         return mSection;
     }
@@ -41,4 +42,5 @@ public class Newsapp {
     public String getUrl() {
         return mUrl;
     }
+
 }
