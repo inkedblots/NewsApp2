@@ -27,7 +27,7 @@
     <string name="settings_section_default" translatable="false">@string/settings_section_all_value</string>
 
     <string name="settings_section_all_label">All</string>
-    <string name="settings_section_all_value" translatable="false"> </string>
+    <string name="settings_section_all_value" translatable="false">all</string>
 
     <string name="settings_section_technology_label">Technology</string>
     <string name="settings_section_technology_value" translatable="false">technology</string>
