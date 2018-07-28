@@ -14,6 +14,16 @@
 
     <string-array name="settings_section_labels">
         <item>@string/settings_section_key</item>
+        <item>@string/settings_section_technology_label</item>
+        <item>@string/settings_section_environment_label</item>
+        <item>@string/settings_section_sport_label</item>
+        <item>@string/settings_section_uk_news_label</item>
+        <item>@string/settings_section_commentisfree_label</item>
+        <item>@string/settings_section_world_label</item>
+        <item>@string/settings_section_lifeandstyle_label</item>
+        <item>@string/settings_section_money_label</item>
+        <item>@string/settings_section_politics_label</item>
+        <item>@string/settings_section_music_label</item>
 
     </string-array>
     <string-array name="settings_section_values">
