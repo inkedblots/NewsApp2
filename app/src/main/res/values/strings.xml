@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">News App</string>
     <string name="noInternet">No Internet Connection</string>
@@ -10,7 +11,7 @@
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_newest_value</string>
+    <string name="settings_order_by_default" translatable="false">Newest</string>
 
     <string name="settings_order_by_newest_label">Newest</string>
     <string name="settings_order_by_newest_value" translatable="false">newest</string>
@@ -21,6 +22,7 @@
     <string name="settings_order_by_relevance_label">Relevance</string>
     <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 
+    <!-- SECTIONS -->
     <string name="settings_section_label">Section</string>
     <string name="settings_section_key" translatable="false">section</string>
     <string name="settings_section_default" translatable="false">Weather</string>

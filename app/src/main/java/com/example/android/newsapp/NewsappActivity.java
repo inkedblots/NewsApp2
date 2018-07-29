@@ -36,7 +36,7 @@ public class NewsappActivity extends AppCompatActivity
             "https://content.guardianapis.com/search?";
 
     private static final int NEWSAPP_LOADER_ID = 1;
-    ListView newsappListView;
+    private ListView newsappListView;
     private NewsappAdapter mAdapter;
     private TextView mEmptyStateTextView;
 
@@ -111,9 +111,9 @@ public class NewsappActivity extends AppCompatActivity
         }
     }
 
-    //                            change 'args' back to 'bundle'
+
     @Override
-    public Loader<List<Newsapp>> onCreateLoader(int i, Bundle args) {
+    public Loader<List<Newsapp>> onCreateLoader(int i, Bundle bundle) {
 
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -122,7 +122,7 @@ public class NewsappActivity extends AppCompatActivity
                 getString(R.string.settings_section_key),
                 getString(R.string.settings_section_default));
 
-        String orderBy = sharedPrefs.getString(
+        sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
                 getString(R.string.settings_order_by_default));
 
@@ -134,7 +134,7 @@ public class NewsappActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("limit", "10");
         uriBuilder.appendQueryParameter("sectionName", sectionId);
         uriBuilder.appendQueryParameter("order-by", "orderBy");
-        uriBuilder.appendQueryParameter("show-tags", "contributor");
+//        uriBuilder.appendQueryParameter("show-tags", "contributor");
 
         if (!sectionId.equals(getString(R.string.settings_section_default))) {
             uriBuilder.appendQueryParameter("sectionName", sectionId);

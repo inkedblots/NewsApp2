@@ -32,16 +32,16 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
         Newsapp currentNews = getItem(position);
 
         TextView titleView = listItemView.findViewById(R.id.title);
-        titleView.setText(currentNews.getTitle());
+        titleView.setText(currentNews != null ? currentNews.getTitle() : null);
 
         TextView sectionView = listItemView.findViewById(R.id.section);
-        sectionView.setText(currentNews.getSection());
+        sectionView.setText(currentNews != null ? currentNews.getSection() : null);
 
         TextView authorView = listItemView.findViewById(R.id.author);
-        authorView.setText(currentNews.getAuthor());
+        authorView.setText(currentNews != null ? currentNews.getAuthor() : null);
 
-        if (currentNews.getAuthor() != "") {
-            authorView.setText(currentNews.getAuthor());
+        if ((currentNews != null ? currentNews.getAuthor() : null) != "") {
+            authorView.setText(currentNews != null ? currentNews.getAuthor() : null);
 
             //Set author name view as visible
             authorView.setVisibility(View.VISIBLE);
@@ -53,18 +53,20 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
         // Find the TextView with view ID date
         TextView dateView = null;
 
-        if (currentNews.getPublicationDate() != null) {
-            dateView = listItemView.findViewById(R.id.date);
-            // Format the date string (i.e. "May 30, 1999")
-            String formattedDate = formatDate(currentNews.getPublicationDate());
-            // Display the date of the current date in that TextView
-            dateView.setText(formattedDate);
-            //Set date views as visible
-            dateView.setVisibility(View.VISIBLE);
+        if (currentNews != null) {
+            if (currentNews.getPublicationDate() != null) {
+                dateView = listItemView.findViewById(R.id.date);
+                // Format the date string (i.e. "May 30, 1999")
+                String formattedDate = formatDate(currentNews.getPublicationDate());
+                // Display the date of the current date in that TextView
+                dateView.setText(formattedDate);
+                //Set date views as visible
+                dateView.setVisibility(View.VISIBLE);
 
-        } else {
-            //Set date & time views as gone
-            dateView.setVisibility(View.GONE);
+            } else {
+                //Set date & time views as gone
+                dateView.setVisibility(View.GONE);
+            }
         }
         return listItemView;
     }

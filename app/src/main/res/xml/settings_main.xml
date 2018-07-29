@@ -17,5 +17,4 @@
         android:entryValues="@array/settings_section_values"
         android:key="@string/settings_section_default"
         android:title="Section" />
-
 </PreferenceScreen>
