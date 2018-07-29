@@ -29,7 +29,6 @@ public class NewsappActivity extends AppCompatActivity
         implements LoaderCallbacks<List<Newsapp>>,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
-
     public static final String LOG_TAG = NewsappActivity.class.getName();
 
     private static final String GUARDIAN_REQUEST_URL =
@@ -96,7 +95,7 @@ public class NewsappActivity extends AppCompatActivity
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (key.equals(getString(R.string.settings_section_key)) ||
                 key.equals(getString(R.string.settings_order_by_key))) {
-            // Clear the ListView as a new query will be kicked off
+            // Clear the ListView as a new query will be started
             mAdapter.clear();
 
             // Hide the empty state text view as the loading indicator will be displayed
@@ -111,10 +110,8 @@ public class NewsappActivity extends AppCompatActivity
         }
     }
 
-
     @Override
     public Loader<List<Newsapp>> onCreateLoader(int i, Bundle bundle) {
-
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -131,10 +128,10 @@ public class NewsappActivity extends AppCompatActivity
 
         uriBuilder.appendQueryParameter("api-key", "0c306426-dbf2-45fe-b3ac-8d26e799c138");
         uriBuilder.appendQueryParameter("format", "json");
-        uriBuilder.appendQueryParameter("limit", "10");
+        uriBuilder.appendQueryParameter("limit", "15");
         uriBuilder.appendQueryParameter("sectionName", sectionId);
-        uriBuilder.appendQueryParameter("order-by", "orderBy");
-//        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
 
         if (!sectionId.equals(getString(R.string.settings_section_default))) {
             uriBuilder.appendQueryParameter("sectionName", sectionId);

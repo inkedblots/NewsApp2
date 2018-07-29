@@ -25,7 +25,7 @@
     <!-- SECTIONS -->
     <string name="settings_section_label">Section</string>
     <string name="settings_section_key" translatable="false">section</string>
-    <string name="settings_section_default" translatable="false">Weather</string>
+    <string name="settings_section_default" translatable="false">section</string>
 
     <string name="settings_section_weather_label">Weather</string>
     <string name="settings_section_weather_value" translatable="false">weather</string>

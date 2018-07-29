@@ -38,7 +38,7 @@ public final class QueryUtils {
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making HTTP request.", e);
         }
-        return extractResponseFromJson(jsonResponse);
+        return extractFeatureFromJson(jsonResponse);
     }
 
     private static URL createUrl(String stringUrl) {
@@ -99,7 +99,7 @@ public final class QueryUtils {
         return output.toString();
     }
 
-    private static List<Newsapp> extractResponseFromJson(String newsappJSON) {
+    private static List<Newsapp> extractFeatureFromJson(String newsappJSON) {
         if (TextUtils.isEmpty(newsappJSON)) {
             return null;
         }
@@ -117,8 +117,7 @@ public final class QueryUtils {
 
                 String title = currentNews.getString("webTitle");
                 String sectionId = currentNews.getString("sectionName");
-
-
+                String url = currentNews.getString("webUrl");
                 JSONArray tags = currentNews.getJSONArray("tags");
 
                 //If "tags" array is not null
@@ -154,7 +153,6 @@ public final class QueryUtils {
                     Log.e("QueryUtils", "Problem parsing the news date", e);
                 }
 
-                String url = currentNews.getString("webUrl");
                 Newsapp newsapps = new Newsapp(sectionId, title, authorFullName, publicationDate, url);
                 newsapp.add(newsapps);
             }
