@@ -62,7 +62,7 @@ public class NewsappActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 Newsapp currentNews = mAdapter.getItem(position);
-                Uri newsappUri = Uri.parse(currentNews != null ? currentNews.getUrl() : null);
+                Uri newsappUri = Uri.parse(currentNews.getUrl());
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsappUri);
 
                 PackageManager packageManager = getPackageManager();
@@ -78,7 +78,6 @@ public class NewsappActivity extends AppCompatActivity
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        assert connMgr != null;
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -129,13 +128,9 @@ public class NewsappActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("api-key", "0c306426-dbf2-45fe-b3ac-8d26e799c138");
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("limit", "15");
-        uriBuilder.appendQueryParameter("sectionName", sectionId);
-        uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("q", sectionId);
+        uriBuilder.appendQueryParameter("order-by", "relevance");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
-
-        if (!sectionId.equals(getString(R.string.settings_section_default))) {
-            uriBuilder.appendQueryParameter("sectionName", sectionId);
-        }
 
         return new NewsappLoader(this, uriBuilder.toString());
     }
@@ -158,6 +153,7 @@ public class NewsappActivity extends AppCompatActivity
     private void updateUi(List<Newsapp> newsapp) {
         mEmptyStateTextView.setVisibility(View.GONE);
         mAdapter.clear();
+
         mAdapter = new NewsappAdapter(this, newsapp);
         newsappListView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
@@ -169,7 +165,7 @@ public class NewsappActivity extends AppCompatActivity
     }
 
     @Override
-    // This method initialize the contents of the Activity's options menu
+    // This method initializes the contents of the Activity's options menu
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;

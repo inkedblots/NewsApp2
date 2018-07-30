@@ -24,11 +24,11 @@
 
     <!-- SECTIONS -->
     <string name="settings_section_label">Section</string>
-    <string name="settings_section_key" translatable="false">section</string>
-    <string name="settings_section_default" translatable="false">section</string>
+    <string name="settings_section_key" translatable="false">Section</string>
+    <string name="settings_section_default" translatable="false">Section</string>
 
-    <string name="settings_section_weather_label">Weather</string>
-    <string name="settings_section_weather_value" translatable="false">weather</string>
+    <string name="settings_section_media_label">Media</string>
+    <string name="settings_section_media_value" translatable="false">media</string>
 
     <string name="settings_section_technology_label">Technology</string>
     <string name="settings_section_technology_value" translatable="false">technology</string>
@@ -48,7 +48,7 @@
     <string name="settings_section_world_label">World News</string>
     <string name="settings_section_world_value" translatable="false">world</string>
 
-    <string name="settings_section_lifeandstyle_label">Life and Style</string>
+    <string name="settings_section_lifeandstyle_label">Life &amp; Style</string>
     <string name="settings_section_lifeandstyle_value" translatable="false">lifeandstyle</string>
 
     <string name="settings_section_money_label">Money</string>
