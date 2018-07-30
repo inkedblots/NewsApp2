@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="sectionDate_textSize">14sp</dimen>
-    <dimen name="title_textSize">18sp</dimen>
-
+    <!-- Newsapp_List_Item -->
+    <dimen name="sectionDateAuthor_textSize">12sp</dimen>
+    <dimen name="title_textSize">16sp</dimen>
+    <dimen name="layoutWeight">1</dimen>
 
 </resources>

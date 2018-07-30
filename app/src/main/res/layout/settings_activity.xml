@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fragment
-    android:name="com.example.android.newsapp.SettingsActivity$NewsappPreferenceFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_activity"
+    android:name="com.example.android.newsapp.SettingsActivity$NewsappPreferenceFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.newsapp.SettingsActivity"
-    android:id="@+id/setting_activity">
+    tools:context="com.example.android.newsapp.SettingsActivity">
 </fragment>

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="2"
-        android:textColor="#FDFDFD"
+        android:textColor="@color/text_color_primary"
         android:textSize="@dimen/title_textSize"
         android:textStyle="italic"
         tools:text="News article lead" />
@@ -30,27 +30,27 @@
             android:gravity="bottom|start"
             android:textAllCaps="true"
             android:textColor="@color/primary_text_material_dark"
-            android:textSize="@dimen/sectionDate_textSize"
+            android:textSize="@dimen/sectionDateAuthor_textSize"
             tools:text="News Section" />
 
         <TextView
             android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="@dimen/layoutWeight"
             android:gravity="bottom|center"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/sectionDate_textSize"
+            android:textSize="@dimen/sectionDateAuthor_textSize"
             tools:text="Author" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="@dimen/layoutWeight"
             android:gravity="bottom|end"
             android:textColor="@color/text_color_secondary2"
-            android:textSize="@dimen/sectionDate_textSize"
+            android:textSize="@dimen/sectionDateAuthor_textSize"
             tools:text="May 1, 2018" />
     </LinearLayout>
 </LinearLayout>
