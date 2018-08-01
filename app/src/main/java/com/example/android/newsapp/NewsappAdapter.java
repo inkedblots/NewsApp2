@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
 public class NewsappAdapter extends ArrayAdapter<Newsapp> {
 
     NewsappAdapter(Context context, List<Newsapp> newsapp) {
@@ -42,29 +41,21 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
 
         if ((currentNews != null ? currentNews.getAuthor() : null) != "") {
             authorView.setText(currentNews != null ? currentNews.getAuthor() : null);
-
-            //Set author name view as visible
             authorView.setVisibility(View.VISIBLE);
         } else {
-            //Set author name view as gone
             authorView.setVisibility(View.GONE);
         }
 
-        // Find the TextView with view ID date
         TextView dateView = null;
 
         if (currentNews != null) {
             if (currentNews.getPublicationDate() != null) {
                 dateView = listItemView.findViewById(R.id.date);
-                // Format the date string (i.e. "May 30, 1999")
+                // Format the date ("May 30, 1999")
                 String formattedDate = formatDate(currentNews.getPublicationDate());
-                // Display the date of the current date in that TextView
                 dateView.setText(formattedDate);
-                //Set date views as visible
                 dateView.setVisibility(View.VISIBLE);
-
             } else {
-                //Set date & time views as gone
                 dateView.setVisibility(View.GONE);
             }
         }
@@ -72,7 +63,7 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
     }
 
     /**
-     * Return the formatted date string (i.e. "May 30, 1999") from a Date object.
+     * Return the formatted date ("May 30, 1999") from Date object.
      */
     private String formatDate(Date dateObject) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");

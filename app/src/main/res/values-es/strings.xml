@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">News App</string>
+    <string name="settings_section_environment_label">ambiente</string>
+    <string name="settings_section_lifeandstyle_label">Estilo de vida</string>
+    <string name="settings_section_media_label">medios de comunicación</string>
+    <string name="settings_section_money_label">dinero</string>
+    <string name="settings_section_music_label">música</string>
+    <string name="settings_order_by_newest_label">novísimo</string>
+    <string name="settings_title">configuración de noticias</string>
+    <string name="noArticles">No se encontraron artículos Porfavor intente más tarde.</string>
+    <string name="noInternet">sin conexión a Internet.</string>
+    <string name="settings_order_by_oldest_label">Más antiguo</string>
+    <string name="settings_section_commentisfree_label">Opinión</string>
+    <string name="settings_order_by_label">Ordenar por</string>
+    <string name="settings_section_politics_label">Política</string>
+    <string name="settings_order_by_relevance_label">Pertinencia</string>
+    <string name="settings_section_label">Sección</string>
+    <string name="settings_menu_item">Configuraciones</string>
+    <string name="settings_section_sport_label">Deportes</string>
+    <string name="settings_section_technology_label">Tecnología</string>
+    <string name="settings_section_uk_news_label">Noticias del Reino Unido</string>
+    <string name="settings_section_world_label">Noticias del mundo</string>
+    <string name="news_section">Sección de noticias</string>
+    <string name="author_name">Autor</string>
+    <string name="date_text">1 de mayo de 2018</string>
+</resources>

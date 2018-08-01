@@ -25,6 +25,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A whole host of individuals assisted me with this this project, as well as stack overflow,
+ * Google search, comments on Slack and chats on several social media channels. Many code snippets
+ * were not of my creation. If it was not for the help of these individuals I wouldn't have
+ * gotten this far. I thank them whole heartedly.
+ * Here are the people from Udacity that assisted: Matthew Bailey (@TheBaileyBrew),
+ * Charles Rowland, Chris Addington (Chris A(ND)ddington), Erin Banister (@Erin), Olivia Meiring
+ */
+
 public class NewsappActivity extends AppCompatActivity
         implements LoaderCallbacks<List<Newsapp>>,
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -52,7 +61,6 @@ public class NewsappActivity extends AppCompatActivity
         mAdapter = new NewsappAdapter(this, new ArrayList<Newsapp>());
         newsappListView.setAdapter(mAdapter);
 
-        // Obtain a reference to the SharedPreferences file for this app
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
@@ -94,17 +102,12 @@ public class NewsappActivity extends AppCompatActivity
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (key.equals(getString(R.string.settings_section_key)) ||
                 key.equals(getString(R.string.settings_order_by_key))) {
-            // Clear the ListView as a new query will be started
+            // Clear the ListView; new query started
             mAdapter.clear();
-
-            // Hide the empty state text view as the loading indicator will be displayed
             mEmptyStateTextView.setVisibility(View.GONE);
 
-            // Show the loading indicator while new data is being fetched
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.VISIBLE);
-
-            // Restart the loader to requery the Guardian as the query settings have been updated
             getLoaderManager().restartLoader(NEWSAPP_LOADER_ID, null, this);
         }
     }
@@ -137,12 +140,10 @@ public class NewsappActivity extends AppCompatActivity
 
     @Override
     public void onLoadFinished(Loader<List<Newsapp>> loader, List<Newsapp> newsapp) {
-        // Hide loading indicator; the data has been loaded
+        // Hide loading indicator; the data loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.noArticles);
-
-        // Clear the adapter of previous articles
         mAdapter.clear();
 
         if (newsapp != null && !newsapp.isEmpty()) {
@@ -165,14 +166,12 @@ public class NewsappActivity extends AppCompatActivity
     }
 
     @Override
-    // This method initializes the contents of the Activity's options menu
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    // This method is called whenever an item in the options menu is selected.
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {

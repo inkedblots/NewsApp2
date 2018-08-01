@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_title">
 
-    <!-- Choose how to ORDER the news -->
     <ListPreference
         android:defaultValue="@string/settings_order_by_default"
         android:entries="@array/settings_order_by_labels"

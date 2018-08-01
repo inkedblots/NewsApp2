@@ -1,56 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:id="@+id/list_item_root"
+    style="@style/list_item_root">
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:textColor="@color/text_color_primary"
-        android:textSize="@dimen/title_textSize"
-        android:textStyle="italic"
+        style="@style/title"
         tools:text="News article lead" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:id="@+id/linear_layout2"
+        style="@style/linear_layout2">
 
         <TextView
             android:id="@+id/section"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="bottom|start"
-            android:textAllCaps="true"
-            android:textColor="@color/primary_text_material_dark"
-            android:textSize="@dimen/sectionDateAuthor_textSize"
-            tools:text="News Section" />
+            style="@style/section"
+            tools:text="@string/news_section" />
 
         <TextView
             android:id="@+id/author"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="@dimen/layoutWeight"
-            android:gravity="bottom|center"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/sectionDateAuthor_textSize"
-            tools:text="Author" />
+            style="@style/author"
+            tools:text="@string/author_name" />
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="@dimen/layoutWeight"
-            android:gravity="bottom|end"
-            android:textColor="@color/text_color_secondary2"
-            android:textSize="@dimen/sectionDateAuthor_textSize"
-            tools:text="May 1, 2018" />
+            style="@style/date"
+            tools:text="@string/date_text" />
     </LinearLayout>
 </LinearLayout>
