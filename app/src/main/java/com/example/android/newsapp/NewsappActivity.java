@@ -25,14 +25,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A whole host of individuals assisted me with this this project, as well as stack overflow,
- * Google search, comments on Slack and chats on several social media channels. Many code snippets
- * were not of my creation. If it was not for the help of these individuals I wouldn't have
- * gotten this far. I thank them whole heartedly.
- * Here are the people from Udacity that assisted: Matthew Bailey (@TheBaileyBrew),
- * Charles Rowland, Chris Addington (Chris A(ND)ddington), Erin Banister (@Erin), Olivia Meiring
- */
+
 
 public class NewsappActivity extends AppCompatActivity
         implements LoaderCallbacks<List<Newsapp>>,
@@ -121,7 +114,7 @@ public class NewsappActivity extends AppCompatActivity
                 getString(R.string.settings_section_key),
                 getString(R.string.settings_section_default));
 
-        sharedPrefs.getString(
+        String orderBy = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
                 getString(R.string.settings_order_by_default));
 
@@ -147,6 +140,7 @@ public class NewsappActivity extends AppCompatActivity
         mAdapter.clear();
 
         if (newsapp != null && !newsapp.isEmpty()) {
+            mAdapter.addAll(newsapp);
             updateUi(newsapp);
         }
     }
