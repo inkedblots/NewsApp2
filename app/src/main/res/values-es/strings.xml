@@ -14,7 +14,7 @@
     <string name="settings_section_commentisfree_label">Opinión</string>
     <string name="settings_order_by_label">Ordenar por</string>
     <string name="settings_section_politics_label">Política</string>
-    <string name="settings_order_by_relevance_label">Pertinencia</string>
+    <string name="settings_order_by_topic_label">tema</string>
     <string name="settings_section_label">Sección</string>
     <string name="settings_menu_item">Configuraciones</string>
     <string name="settings_section_sport_label">Deportes</string>

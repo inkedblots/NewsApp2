@@ -1,5 +1,6 @@
 package com.example.android.newsapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -66,7 +67,7 @@ public class NewsappAdapter extends ArrayAdapter<Newsapp> {
      * Return the formatted date ("May 30, 1999") from Date object.
      */
     private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
         return dateFormat.format(dateObject);
     }
 }

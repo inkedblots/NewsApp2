@@ -12,18 +12,23 @@
     <string name="date_text">January 1, 2018</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_topic_label">News Topic</string>
+    <string name="settings_topic_key" translatable="false">newest</string>
+    <string name="settings_topic_default" translatable="false">Sports</string>
+
+
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">Newest</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_topic_label</string>
+
+    <string name="settings_order_by_topic_label">Relevance</string>
+    <string name="settings_order_by_topic_value" translatable="false">relevance</string>
 
     <string name="settings_order_by_newest_label">Newest</string>
     <string name="settings_order_by_newest_value" translatable="false">newest</string>
 
     <string name="settings_order_by_oldest_label">Oldest</string>
     <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
-
-    <string name="settings_order_by_relevance_label">Relevance</string>
-    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 
     <!-- SECTIONS -->
     <string name="settings_section_label">Section</string>

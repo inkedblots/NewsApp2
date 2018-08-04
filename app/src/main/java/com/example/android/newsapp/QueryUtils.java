@@ -1,5 +1,6 @@
 package com.example.android.newsapp;
 
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -101,6 +102,7 @@ public final class QueryUtils {
         return output.toString();
     }
 
+    @SuppressLint("SimpleDateFormat")
     private static List<Newsapp> extractFeatureFromJson(String newsappJSON) {
         if (TextUtils.isEmpty(newsappJSON)) {
             return null;

@@ -125,7 +125,7 @@ public class NewsappActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("limit", "15");
         uriBuilder.appendQueryParameter("q", sectionId);
-        uriBuilder.appendQueryParameter("order-by", "relevance");
+        uriBuilder.appendQueryParameter("order-by", orderBy); /*Reviewer said no hardcoded value */
         uriBuilder.appendQueryParameter("show-tags", "contributor");
 
         return new NewsappLoader(this, uriBuilder.toString());
