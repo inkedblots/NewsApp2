@@ -24,8 +24,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
+/**
+ * A whole host of individuals assisted me with this this project, as well as stack overflow,
+ * Google search, comments on Slack and chats on several social media channels. Many code snippets
+ * were not of my creation. If it was not for the help of these individuals I wouldn't have
+ * gotten this far. I thank them whole heartedly.
+ * Here are the people from Udacity that assisted: Matthew Bailey (@TheBaileyBrew),
+ * Charles Rowland, Chris Addington (Chris A(ND)ddington), Erin Banister (@Erin), Olivia Meiring,
+ * and Lori [ABND]
+ */
 
 public class NewsappActivity extends AppCompatActivity
         implements LoaderCallbacks<List<Newsapp>>,
@@ -125,7 +132,7 @@ public class NewsappActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("limit", "15");
         uriBuilder.appendQueryParameter("q", sectionId);
-        uriBuilder.appendQueryParameter("order-by", orderBy); /*Reviewer said no hardcoded value */
+        uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("show-tags", "contributor");
 
         return new NewsappLoader(this, uriBuilder.toString());

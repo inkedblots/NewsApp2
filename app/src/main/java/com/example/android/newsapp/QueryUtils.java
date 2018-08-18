@@ -22,7 +22,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * A whole host of individuals assisted me with this this project, as well as stack overflow,
+ * Google search, comments on Slack and chats on several social media channels. Many code snippets
+ * were not of my creation. If it was not for the help of these individuals I wouldn't have
+ * gotten this far. I thank them whole heartedly.
+ * Here are the people from Udacity that assisted: Matthew Bailey (@TheBaileyBrew),
+ * Charles Rowland, Chris Addington (Chris A(ND)ddington), Erin Banister (@Erin), Olivia Meiring,
+ * and Lori [ABND]
+ */
 
 public final class QueryUtils {
 
